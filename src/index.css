@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Inter:wght@100..900&display=swap');
+
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --bg-overlay: rgba(5, 5, 5, 0.6);
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --accent-gold: #d4af37;
+  --accent-gold-glow: rgba(212, 175, 55, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.05);
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+section {
+  /* Scroll margins removed in favor of padding-based alignment for opaque background coverage */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fbf5e6 0%, #d4af37 45%, #b8860b 80%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.section-padding {
+  padding: 110px 0 100px;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px var(--accent-gold-glow);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  border: 1px solid var(--glass-border);
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Sticky CTA Button */
+.sticky-cta-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 100;
+  padding: 14px 28px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-gold);
+  border-radius: 100px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+.sticky-cta-btn:hover {
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+}
+
+.sticky-cta-btn .btn-glow {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(8px);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@media (max-width: 768px) {
+  .sticky-cta-btn {
+    bottom: 24px;
+    right: 24px;
+    padding: 10px 20px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Base App structure */
+.app-container {
+  position: relative;
+  width: 100%;
+}
