@@ -203,4 +203,7 @@
     left: 20px;
     bottom: 20px;
   }
+  .events-bg {
+    background-attachment: scroll;
+  }
 }

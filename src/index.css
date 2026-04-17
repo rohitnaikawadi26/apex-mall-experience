@@ -27,8 +27,16 @@ body {
   color: var(--text-primary);
   font-family: var(--font-body);
   overflow-x: hidden;
+  min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 section {
@@ -64,11 +72,15 @@ h6 {
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 clamp(20px, 5vw, 80px);
+}
+
+main {
+  padding-top: 90px;
 }
 
 .section-padding {
-  padding: 110px 0 100px;
+  padding: clamp(70px, 10vw, 110px) 0 clamp(70px, 8vw, 100px);
 }
 
 .min-h-screen {
@@ -181,10 +193,19 @@ h6 {
     padding: 10px 20px;
     font-size: 0.7rem;
   }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  main {
+    padding-top: 80px;
+  }
 }
 
 /* Base App structure */
 .app-container {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
 }

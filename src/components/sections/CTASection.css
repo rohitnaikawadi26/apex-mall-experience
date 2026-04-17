@@ -122,6 +122,9 @@
   .form-grid {
     grid-template-columns: 1fr;
   }
+  .cta-bg-image {
+    background-attachment: scroll;
+  }
 }
 
 .global-footer {
@@ -177,6 +180,53 @@
   opacity: 0.15;
   z-index: 1;
   pointer-events: none;
+}
+
+.consultation-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+  padding: 24px;
+}
+
+.consultation-modal {
+  position: relative;
+  max-width: 520px;
+  width: 100%;
+  padding: 36px;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.consultation-modal h3 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+}
+
+.consultation-modal p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {

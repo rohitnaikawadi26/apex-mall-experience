@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './CTASection.css';
 
 const CTASection = () => {
+  const [consultationOpen, setConsultationOpen] = useState(false);
+
   return (
     <>
       <section className="cta-section section-padding" id="partner">
@@ -20,14 +22,13 @@ const CTASection = () => {
           <p className="cta-desc">Join the ecosystem where the world's most influential brands and millions of global visitors converge daily.</p>
           
           <div className="cta-actions">
-            <a href="#partner" className="btn-primary">Lease Space</a>
             <a href="#partner" className="btn-outline">Partner With Us</a>
             <a href="#events" className="btn-outline">Book an Event</a>
           </div>
 
           <div className="cta-form-container glass">
             <h4 className="cta-form-title">Business Inquiry</h4>
-            <form className="cta-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="cta-form" onSubmit={(e) => { e.preventDefault(); setConsultationOpen(true); }}>
                <div className="form-grid">
                   <input type="text" placeholder="Full Name" required />
                   <input type="email" placeholder="Business Email" required />
@@ -46,6 +47,17 @@ const CTASection = () => {
         </motion.div>
       </div>
       <div className="cta-bg-glow"></div>
+
+      {consultationOpen && (
+        <div className="consultation-modal-overlay" role="dialog" aria-modal="true">
+          <div className="consultation-modal glass">
+            <button className="modal-close" type="button" onClick={() => setConsultationOpen(false)} aria-label="Close consultation confirmation">×</button>
+            <h3>Consultation Requested</h3>
+            <p>Thank you — your request has been received. Our team will contact you shortly to schedule a fixed consultation.</p>
+            <button type="button" className="btn-primary" onClick={() => setConsultationOpen(false)}>Great, thanks</button>
+          </div>
+        </div>
+      )}
     </section>
 
       <footer className="global-footer">
