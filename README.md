@@ -11,7 +11,7 @@ APEX is not a website; it is an **Interactive Sales Platform**. Built for high-s
 
 While traditional platforms focus on structure first, APEX prioritizes **Storytelling**. It is a tool for developers, leasing teams, and property managers to pitch the "Soul of the Mall" to global retail maisons and world-class entertainers.
 
-[Live Demo Placeholder](https://apex-demo.com)
+[Live Demo Placeholder](https://apex-mall-experience.vercel.app/)
 
 ---
 
