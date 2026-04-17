@@ -28,7 +28,7 @@ const CTASection = () => {
 
           <div className="cta-form-container glass">
             <h4 className="cta-form-title">Business Inquiry</h4>
-            <form className="cta-form" onSubmit={(e) => { e.preventDefault(); setConsultationOpen(true); }}>
+            <form className="cta-form" onSubmit={(e) => { e.preventDefault(); e.target.reset(); setConsultationOpen(true); }}>
                <div className="form-grid">
                   <input type="text" placeholder="Full Name" required />
                   <input type="email" placeholder="Business Email" required />
