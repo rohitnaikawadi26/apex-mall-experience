@@ -1,8 +1,10 @@
 # APEX — Interactive Digital Sales Deck (Digideck)
 An immersive, high-impact interactive presentation platform designed for luxury brand partnerships.
 
-[![APEX Showcase](https://img.shields.io/badge/Platform-Interactive_Sales_Deck-D4AF37)](./)
+[![APEX Showcase](https://img.shields.io/badge/Live_Presentation-Visit_Deck-D4AF37)](https://apex-mall-experience.vercel.app/)
 *A slide-based, cinematic sales experience built for premium destination malls.*
+
+**[Live Experience → https://apex-mall-experience.vercel.app/](https://apex-mall-experience.vercel.app/)**
 
 ---
 
