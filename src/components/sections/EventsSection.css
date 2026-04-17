@@ -1,227 +1,209 @@
 .events-section {
-  background-color: var(--bg-primary);
   position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: #050505; /* Barely lighter than pure black for depth */
   overflow: hidden;
 }
 
-.events-bg {
+.events-dark-layer {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  opacity: 0.8;
-  filter: blur(3px);
-  transform: scale(1.05);
-  z-index: 0;
-}
-
-.events-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(to bottom, var(--bg-primary) 0%, transparent 15%, transparent 85%, var(--bg-primary) 100%),
-    radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 100%);
+  inset: 0;
+  /* Very subtle, expensive-looking spotlight effect */
+  background: radial-gradient(circle at 30% 50%, rgba(20, 20, 20, 1) 0%, rgba(5, 5, 5, 1) 70%);
   z-index: 1;
 }
 
-.events-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+/* Background watermark for empty space utility */
+.events-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: 25vw;
+  color: rgba(255,255,255,0.015);
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.events-split-layout {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
   align-items: center;
+  justify-content: space-between;
+  padding: 0; /* Remove restrictive outer padding to use full width */
+}
+
+/* ── LEFT: TYPOGRAPHY ── */
+.events-typography-col {
+  width: 50%;
+  padding-left: 8vw; /* Aligns with global container margins */
+  z-index: 15;
+}
+
+.events-content {
+  max-width: 650px;
+}
+
+.events-kicker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.events-kicker-line {
+  width: 40px;
+  height: 1px;
+  background-color: var(--accent-gold);
+}
+
+.events-kicker {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+/* The giant headline with drop shadow so it pops against video */
+.events-title {
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 8vw, 9rem); /* Made even larger to own the space */
+  font-weight: 400;
+  line-height: 0.95;
+  color: #fff;
+  letter-spacing: -0.04em;
+  margin-bottom: 3vh;
+  white-space: nowrap;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.events-title-italic {
+  font-family: "Playfair Display", "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: 300;
+  color: #fff;
 }
 
 .events-desc {
+  font-family: var(--font-body);
   font-size: 1.15rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
+  line-height: 1.8;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
   margin-bottom: 40px;
-  max-width: 450px;
+  max-width: 550px; /* Use more horizontal space */
 }
 
-.events-image-wrap {
-  position: relative;
+.events-feature-list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.events-image {
-  border-radius: 4px;
+.feature-chip {
+  padding: 10px 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 40px; /* Fully rounded buttons look more ultra-modern */
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.feature-chip:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* ── RIGHT: FLOATING DIGIDECK VIDEO CARD ── */
+.events-runway-screen {
+  position: relative; 
+  width: 38vw;  /* Slightly trimmed to allow breathing room */
+  height: 75vh;
+  right: 8vw; /* Pushed safely inward away from the navigation arrows! */
+  z-index: 5;
+  border-radius: 12px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08); /* Digideck hardware aesthetic */
+  overflow: visible; 
+}
+
+.runway-video-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-  height: 600px;
 }
 
-.events-image img,
-.events-image video {
+.runway-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  filter: saturate(1.1) brightness(0.9);
 }
 
-.events-image:hover img,
-.events-image:hover video {
-  transform: scale(1.05);
-}
-
-.placeholder-anim {
-  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-primary) 50%, var(--bg-secondary) 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-.experience-metric {
+/* ── FLOATING METRIC (BROKEN GRID) ── */
+.metric-floating-card {
   position: absolute;
-  bottom: -30px;
-  left: -30px;
-  padding: 30px;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.85);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  z-index: 10;
+  bottom: -4vh; /* Dangles below the video completely */
+  left: -4vw; /* Hangs off the left edge */
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 25px 35px;
+  border-radius: 8px; /* Slightly more rounded */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  z-index: 20;
 }
 
 .metric-val {
   font-family: var(--font-heading);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 300;
+  color: #fff;
   line-height: 1;
-  margin-bottom: 8px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .metric-label {
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #ffffff;
-  font-weight: 500;
-}
-
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(5px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.modal-content {
-  background: var(--bg-secondary);
-  padding: 50px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 500px;
-  position: relative;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-}
-
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  color: var(--text-primary);
-  cursor: pointer;
-}
-
-.modal-title {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.modal-subtitle {
-  color: var(--text-secondary);
-  margin-bottom: 30px;
-}
-
-.modal-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.modal-form input,
-.modal-form select {
-  width: 100%;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--glass-border);
-  border-radius: 4px;
-  color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-top: 8px;
 }
 
-.modal-form input:focus,
-.modal-form select:focus {
-  outline: none;
-  border-color: var(--accent-gold);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.modal-form select {
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
-    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
-  background-position: calc(100% - 20px) calc(50% - 3px), calc(100% - 15px) calc(50% - 3px);
-  background-size: 6px 6px;
-  background-repeat: no-repeat;
-}
-
-.modal-form option {
-  background-color: var(--bg-secondary, #1a1a1a);
-  color: var(--text-primary, #ffffff);
-}
-
-.modal-form option:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-.modal-form select::-ms-expand {
-  display: none;
-}
-
+/* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .events-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
+  .events-split-layout {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 4vw;
   }
-  .events-image-wrap {
-    margin-top: 40px;
+  .events-typography-col {
+    width: 100vw;
+    transform: none;
+    padding: 10vh 4vw 2vh;
   }
-  .experience-metric {
-    left: 20px;
-    bottom: 20px;
+  .events-runway-screen {
+    width: 90vw;
+    height: 45vh;
+    transform: none;
+    margin: 0 auto;
   }
-  .events-bg {
-    background-attachment: scroll;
+  .metric-floating-card {
+    left: 10vw;
+    bottom: -20px;
   }
 }

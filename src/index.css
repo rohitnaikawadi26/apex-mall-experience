@@ -7,6 +7,7 @@
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
   --accent-gold: #d4af37;
+  --accent-gold-rgb: 212, 175, 55;
   --accent-gold-glow: rgba(212, 175, 55, 0.4);
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.05);
@@ -182,8 +183,13 @@ main {
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @media (max-width: 768px) {
