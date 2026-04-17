@@ -48,17 +48,7 @@ const BrandCard = ({ brand, delay }) => {
   );
 };
 
-const RetailSection = ({ isActive }) => {
-  const videoRef = React.useRef(null);
-
-  React.useEffect(() => {
-    if (isActive && videoRef.current) {
-      videoRef.current.play().catch(e => console.log("Playback blocked", e));
-    } else if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  }, [isActive]);
-
+const RetailSection = () => {
   return (
     <section className="retail-section" id="retail">
       <div className="retail-video-bg">
@@ -69,11 +59,10 @@ const RetailSection = ({ isActive }) => {
           transition={{ duration: 1.5 }}
         >
           <video 
-            ref={videoRef}
+            autoPlay 
             loop 
             muted 
             playsInline 
-            preload="none"
             poster="/assets/Dubai%20Fashion%20Launge.png"
             className="retail-bg-video"
           >

@@ -2,28 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './AttractionsSection.css';
 
-const AttractionsSection = ({ isActive }) => {
-  const videoRef = React.useRef(null);
-
-  React.useEffect(() => {
-    if (isActive && videoRef.current) {
-      videoRef.current.play().catch(e => console.log("Playback blocked", e));
-    } else if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  }, [isActive]);
-
+const AttractionsSection = () => {
   return (
     <section className="attractions-section" id="attractions">
       
       {/* Immersive Edge-to-Edge Video Background */}
       <div className="attractions-video-bg">
         <video 
-          ref={videoRef}
+          autoPlay 
           loop 
           muted 
           playsInline
-          preload="none"
           poster="/assets/attractions_aquarium_1776320542062.png"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         >

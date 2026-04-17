@@ -116,10 +116,7 @@ function App() {
             style={{ position: 'absolute', width: '100%', height: '100%', overflow: 'hidden' }}
           >
             <div className="presentation-slide-wrapper" style={{ height: '100vh', width: '100%', overflow: 'hidden' }}>
-              <CurrentComponent 
-                onNext={handleNext} 
-                isActive={true} /* Only the current component in AnimatePresence is active */
-              />
+              <CurrentComponent onNext={handleNext} />
             </div>
           </motion.div>
         </AnimatePresence>
