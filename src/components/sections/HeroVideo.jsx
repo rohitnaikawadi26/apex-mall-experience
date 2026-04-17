@@ -3,7 +3,15 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import './HeroVideo.css';
 
-const HeroVideo = ({ onNext }) => {
+const HeroVideo = ({ onNext, isActive }) => {
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (isActive && videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Autoplay blocked", e));
+    }
+  }, [isActive]);
+
   return (
     <div className="hero-container" id="home">
       <motion.div 
@@ -14,10 +22,11 @@ const HeroVideo = ({ onNext }) => {
       >
         <div className="hero-overlay" style={{ background: 'rgba(5, 5, 5, 0.4)' }}></div>
         <video 
-           autoPlay 
+           ref={videoRef}
            loop 
            muted 
            playsInline
+           preload="metadata"
            className="hero-video-element"
            poster="/assets/hero_mall_cinematic_1776320337172.png"
         >

@@ -2,7 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './EventsSection.css';
 
-const EventsSection = () => {
+const EventsSection = ({ isActive }) => {
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (isActive && videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Playback blocked", e));
+    } else if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [isActive]);
+
   return (
     <section className="events-section" id="events">
       
@@ -54,11 +64,13 @@ const EventsSection = () => {
         >
           <div className="runway-video-container">
             <video 
+              ref={videoRef}
               src="/assets/World_Of_Fashion_Launch_at_Mall.mp4" 
-              autoPlay 
               loop 
               muted 
               playsInline 
+              preload="none"
+              poster="/assets/Dubai%20Fashion%20Launge.png"
               className="runway-video"
             />
           </div>

@@ -2,23 +2,33 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './AttractionsSection.css';
 
-const AttractionsSection = () => {
+const AttractionsSection = ({ isActive }) => {
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (isActive && videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Playback blocked", e));
+    } else if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [isActive]);
+
   return (
     <section className="attractions-section" id="attractions">
       
       {/* Immersive Edge-to-Edge Video Background */}
       <div className="attractions-video-bg">
-        <motion.video 
-          autoPlay 
+        <video 
+          ref={videoRef}
           loop 
           muted 
           playsInline
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
+          preload="none"
+          poster="/assets/attractions_aquarium_1776320542062.png"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         >
           <source src="/assets/Dubai_Aquarium.mp4" type="video/mp4" />
-        </motion.video>
+        </video>
         {/* Deep cinematic fade from left to right */}
         <div className="attractions-gradient-overlay"></div>
       </div>

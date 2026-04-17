@@ -70,6 +70,7 @@ const LuxurySection = () => {
             <img
               src="https://images.unsplash.com/photo-1534126416832-a88fdf2911c2?auto=format&fit=crop&w=600&q=80"
               alt="High Fashion Detail"
+              loading="lazy"
             />
           </motion.div>
 
