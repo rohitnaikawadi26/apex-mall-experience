@@ -102,6 +102,38 @@
   transition: all 0.3s ease;
 }
 
+.cta-form select {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(50% - 3px), calc(100% - 15px) calc(50% - 3px);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.cta-form select:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.cta-form option {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+.cta-form option:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cta-form select::-ms-expand {
+  display: none;
+}
+
 .cta-form input:focus, 
 .cta-form select:focus, 
 .cta-form textarea:focus {

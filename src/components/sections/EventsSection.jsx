@@ -5,6 +5,7 @@ import './EventsSection.css';
 
 const EventsSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [confirmationShown, setConfirmationShown] = useState(false);
 
   return (
     <section className="events-section section-padding" id="events">
@@ -72,24 +73,34 @@ const EventsSection = () => {
             >
               <button 
                  className="modal-close"
-                 onClick={() => setModalOpen(false)}
+                 onClick={() => { setModalOpen(false); setConfirmationShown(false); }}
                  aria-label="Close Inquiry Modal"
               >
                 <X size={24} />
               </button>
-              <h3 className="modal-title">Event Inquiry</h3>
-              <p className="modal-subtitle">Connect with our events team.</p>
-              <form className="modal-form" onSubmit={(e) => { e.preventDefault(); setModalOpen(false); }}>
-                <input type="text" placeholder="Your Name" required />
-                <input type="email" placeholder="Email Address" required />
-                <select required>
-                  <option value="">Event Type</option>
-                  <option value="brand">Brand Activation</option>
-                  <option value="concert">Concert / Performance</option>
-                  <option value="exhibition">Exhibition</option>
-                </select>
-                <button type="submit" className="btn-primary w-full" style={{ marginTop: '16px' }}>Submit Inquiry</button>
-              </form>
+              {confirmationShown ? (
+                <>
+                  <h3 className="modal-title">Inquiry Submitted</h3>
+                  <p className="modal-subtitle">Your event query has been booked. Our team will contact you shortly to discuss details.</p>
+                  <button type="button" className="btn-primary w-full" onClick={() => { setModalOpen(false); setConfirmationShown(false); }}>Close</button>
+                </>
+              ) : (
+                <>
+                  <h3 className="modal-title">Event Inquiry</h3>
+                  <p className="modal-subtitle">Connect with our events team.</p>
+                  <form className="modal-form" onSubmit={(e) => { e.preventDefault(); setConfirmationShown(true); }}>
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Email Address" required />
+                    <select required>
+                      <option value="">Event Type</option>
+                      <option value="brand">Brand Activation</option>
+                      <option value="concert">Concert / Performance</option>
+                      <option value="exhibition">Exhibition</option>
+                    </select>
+                    <button type="submit" className="btn-primary w-full" style={{ marginTop: '16px' }}>Submit Inquiry</button>
+                  </form>
+                </>
+              )}
             </motion.div>
           </motion.div>
         )}
