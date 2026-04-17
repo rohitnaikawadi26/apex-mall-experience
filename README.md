@@ -4,6 +4,11 @@ An interactive sales experience designed to convert attention into opportunity.
 [![APEX Showcase](https://img.shields.io/badge/Platform-Interactive_Sales_Deck-D4AF37)](file:///f:/Project%20Repos/Company%20Website)
 *An immersive, video-driven narrative designed for the world's most iconic destination mall.*
 
+## 📘 Detailed Case Study
+For the full narrative, product strategy, and luxury motion design details, open the case study file below.
+
+[Read the full case study → CASE_STUDY.md](./CASE_STUDY.md)
+
 ---
 
 ## 💎 Project Overview
